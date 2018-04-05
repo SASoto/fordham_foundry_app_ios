@@ -10,15 +10,15 @@ import App from '../App';
 
 import SplashScreen from './onboarding/splash_screen';
 import OnboardScreen from './onboarding/onboarding_screen';
-import HomeScreen from '../Tabs/Home/home_screen';
-import JobScreen from '../Tabs/Jobs/job_screen';
+import HomeScreen from './Home/home_screen';
+import JobScreen from './Jobs/job_screen';
 import JobCreate from './Jobs/JobCreate';
-import BubbleScreen from '../Tabs/Bubble/bubble_screen';
-import FFBusScreen from '../Tabs/Bubble/ffbus_screen';
-import DMScreen from '../Tabs/DandM/dm_screen';
-import LoginScreen from '../Tabs/Login/login_screen';
+import BubbleScreen from './Bubble/bubble_screen';
+import FFBusScreen from './Bubble/ffbus_screen';
+import DMScreen from './DandM/dm_screen';
+import LoginScreen from './onboarding/login_screen';
 import SignupScreen from './onboarding/signup_screen';
-import LogoutScreen from '../Tabs/Login/logout_screen';
+import LogoutScreen from './Login/logout_screen';
 
 export const Splash_Stack = StackNavigator ({
 	Splash: {
