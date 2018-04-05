@@ -1,0 +1,17 @@
+export default arrofImages = [
+    require('../../Images/ALBartosic.png'),
+    require('../../Images/anthonyp.jpg'),
+    require('../../Images/BillCatalano.png'),
+    require('../../Images/LIPhotoCMeyer.jpg'),
+    require('../../Images/Christine_Janssen.jpg'),
+    require('../../Images/Enzo.jpg'),
+    require('../../Images/KevinMcQuillan.png'),
+    require('../../Images/MariellaSypa.jpg'),
+    require('../../Images/MMcSherry.jpg'),
+    require('../../Images/MichaelPriest.png'),
+    require('../../Images/image1.jpg'),
+    require('../../Images/NicolaCorzine.png'),
+    require('../../Images/NicoleJohnson.png'),
+    require('../../Images/shaunjohnsonsquare.jpg'),
+    require('../../Images/Weiyu.jpg'),
+]
