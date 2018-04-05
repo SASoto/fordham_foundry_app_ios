@@ -33,43 +33,19 @@ class logout_screen extends Component {
   renderContent() {
     if(this.props.loggedIn === true) {
       return(
-          <View marginTop = {20} alignItems = "center">
-          <View alignItems = "center">
-                    <Image source = {require('../../../Images/logo.png')} 
-                      style={{
-                      width: 200,
-                      height: 200,
-                      }}/>
-                </View>
-
-                <View>
-                    <Text style = {styles.headTextStyle}>
-                    {firebase.auth().currentUser.email}
-                    </Text>
-                </View>
           <View>
-            <Button onPress={this.onButtonPress.bind(this)}> Log out </Button>
-          </View>
-          <View height = {70}/>
-            <ClickMe onPress = {() => Linking.openURL('https://goo.gl/forms/Gv0ZJiEMQbzauTOo1')}>
-              <Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>        
-            </ClickMe>
+              <Text style = {styles.headTextStyle}>
+              {firebase.auth().currentUser.email}
+              </Text>
           </View>
         );
     } else {
         return(
-            <View marginTop = {20} alignItems = "center">
-            <View alignItems = "center">
-              <Image source = {require('../../../Images/logo.png')} 
-                style={{
-                width: 200,
-                height: 200,
-              }}/>
-              <Text style = {styles.headTextStyle}>
-              See you again soon!
-              </Text>
-            </View>
-            </View>
+          <View>
+            <Text style = {styles.headTextStyle}>
+            See you again soon!
+            </Text>
+          </View>
           );
     }
   }
@@ -77,7 +53,23 @@ class logout_screen extends Component {
 	render() {
     return (
       <ViewContainer>
-      {this.renderContent()}
+      <View marginTop = {20} alignItems = "center">
+      <View alignItems = "center">
+          <Image source = {require('../../../Images/logo.png')} 
+            style={{
+            width: 200,
+            height: 200,
+            }}/>
+      </View>
+            {this.renderContent()}
+      <View>
+        <Button onPress={this.onButtonPress.bind(this)}> Log out </Button>
+      </View>
+      <View height = {70}/>
+        <ClickMe onPress = {() => Linking.openURL('https://goo.gl/forms/Gv0ZJiEMQbzauTOo1')}>
+          <Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>        
+        </ClickMe>
+      </View>
       </ViewContainer>
     )
 	}
