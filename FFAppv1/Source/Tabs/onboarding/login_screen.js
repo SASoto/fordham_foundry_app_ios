@@ -64,7 +64,7 @@ class login_screen extends Component {
 
   render(){
     return(
-    <View flex={1}>
+    <View flex={1} backgroundColor={'#F5FCFF'}>
       <TouchableWithoutFeedback onPress = {Keyboard.dismiss} accesible={false}>
       <View flexDirection = "column" marginTop = {20}>
       <View marginTop={10}>
@@ -132,7 +132,6 @@ class login_screen extends Component {
 }
 
 const styles = ({
-
   container: {
     flex: 1,
     alignItems: 'center',

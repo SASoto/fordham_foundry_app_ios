@@ -2,13 +2,13 @@ import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 
 //Custom button component
-const Button = ({ onPress, children }) => {
+const Button = ({ onPress, disabled, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
     //any component or tag inside Button will be displayed as text
     <View style = {styles.container}>
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
+    <TouchableOpacity disabled = {disabled} onPress={onPress} style={buttonStyle}>
       <Text style={textStyle}>
         {children}
       </Text>
