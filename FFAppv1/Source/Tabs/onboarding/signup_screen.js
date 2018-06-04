@@ -84,7 +84,7 @@ class signup_screen extends Component {
                 style={styles.input}
                 autoCapitalize = 'none'
                 autoCorrect = {false}
-                placeholder = "user@example.com"
+                placeholder = "Darth"
                 placeholderTextColor = 'rgba(0,0,0,0.6)'>
             </TextInput>
             </View>
@@ -97,7 +97,7 @@ class signup_screen extends Component {
                 style={styles.input}
                 autoCapitalize = 'none'
                 autoCorrect = {false}
-                placeholder = "user@example.com"
+                placeholder = "Vader"
                 placeholderTextColor = 'rgba(0,0,0,0.6)'>
             </TextInput>
             </View>
@@ -110,7 +110,7 @@ class signup_screen extends Component {
                 style={styles.input}
                 autoCapitalize = 'none'
                 autoCorrect = {false}
-                placeholder = "user@example.com"
+                placeholder = "example@fordham.edu"
                 onChangeText = {this.onEmailChange.bind(this)}
                 placeholderTextColor = 'rgba(0,0,0,0.6)'
                 value = {this.props.email}>
@@ -125,7 +125,7 @@ class signup_screen extends Component {
                 style={styles.input}
                 autoCapitalize = 'none'
                 autoCorrect = {false}
-                placeholder = "user@example.com"
+                placeholder = "Must contain at least 8 characters."
                 onChangeText = {this.onPasswordChange.bind(this)}
                 placeholderTextColor = 'rgba(0,0,0,0.6)'
                 value = {this.props.password}>
