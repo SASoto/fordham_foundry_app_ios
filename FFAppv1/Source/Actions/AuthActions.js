@@ -36,6 +36,14 @@ export const loginUser = ({email, password}) => {
   }
 }
 
+//Add the new user to the 'users' database branch.
+function writeUserData(userId, email) {
+  firebase.database().ref('users/' + userId).set({
+    email: email,
+  })
+  console.log('Wrote user data successfully...??')
+}
+
 export const newUser = ({email, password}) => {
   if (email == '', password == '') {
     return(dispatch) => {
@@ -47,8 +55,22 @@ export const newUser = ({email, password}) => {
   {
    return (dispatch) => {
     dispatch({type: NEW_USER})
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then (() => {alert ('Your Account Was Created!');
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+      console.log('Trying to sign in with new account...')
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log('Error message is: ', errorMessage)
+        // ...
+      }).then(() => {
+      console.log('Trying to fetch userId of current user')
+      var userId = firebase.auth().currentUser.uid;
+      console.log('userId is:', userId)
+      writeUserData(userId,email)
+      })
+    })
+    .then (() => {alert ('Your Account Was Created!');
       this.props({
         email,
         password,
