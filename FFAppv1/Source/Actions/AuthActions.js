@@ -52,6 +52,7 @@ export const loginUser = ({email, password}) => {
 
 //Add the new user to the 'users' database branch.
 function writeNewUserData(userId, email,firstname,lastname) {
+  var refreshinit = "January 1, 2001 08:00:00"
   firebase.database().ref('users/' + userId).set({
     email: email,
     firstname: firstname,
@@ -60,6 +61,7 @@ function writeNewUserData(userId, email,firstname,lastname) {
     rhcamp: false,
     lccamp: false,
     westcamp: false,
+    lastnewsrefresh: refreshinit,      //A string object – if dates/times need to be compared, must convert to date with 'new Date()'
   })
   //console.log('Wrote user data successfully...??')
 }
