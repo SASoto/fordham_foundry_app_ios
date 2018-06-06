@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet} from 'react-native';
 import {Text, View, Image, Button, TextInput, Keyboard, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 
-import {emailChanged, passwordChanged, loginUser, loggedInUser, newUser} from '../../Actions';
+import {emailChanged, passwordChanged, firstnameChanged, lastnameChanged, loginUser, loggedInUser, newUser} from '../../Actions';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 
@@ -27,13 +27,21 @@ class signup_screen extends Component {
         this.props.emailChanged(text)
     }
 
+    onFirstNameChange(text){
+        this.props.firstnameChanged(text)
+    }
+
+    onLastNameChange(text){
+        this.props.lastnameChanged(text)
+    }
+
     onPasswordChange(text){
         this.props.passwordChanged(text)
     }
 
     onNewHere() {
-        const {email, password} = this.props
-        this.props.newUser({email: email || '', password: password || ''})
+        const {email, password, firstname, lastname} = this.props
+        this.props.newUser({email: email || '', password: password || '', firstname: firstname || '', lastname: lastname || '',})
     }
 
     checkFlag() {
@@ -82,10 +90,12 @@ class signup_screen extends Component {
             </View>
             <TextInput
                 style={styles.input}
-                autoCapitalize = 'none'
+                autoCapitalize = 'words'
                 autoCorrect = {false}
                 placeholder = "Darth"
-                placeholderTextColor = 'rgba(0,0,0,0.6)'>
+                onChangeText = {this.onFirstNameChange.bind(this)}
+                placeholderTextColor = 'rgba(0,0,0,0.6)'
+                value = {this.props.firstname}>
             </TextInput>
             </View>
 
@@ -95,10 +105,12 @@ class signup_screen extends Component {
             </View>
             <TextInput
                 style={styles.input}
-                autoCapitalize = 'none'
+                autoCapitalize = 'words'
                 autoCorrect = {false}
                 placeholder = "Vader"
-                placeholderTextColor = 'rgba(0,0,0,0.6)'>
+                onChangeText = {this.onLastNameChange.bind(this)}
+                placeholderTextColor = 'rgba(0,0,0,0.6)'
+                value = {this.props.lastname}>
             </TextInput>
             </View>
 
@@ -188,10 +200,12 @@ const mapStateToProps = state => {
   return {
     email: state.auth.email,
     password: state.auth.password,
+    firstname: state.auth.firstname,
+    lastname: state.auth.lastname,
     error: state.auth.error,
     loading: state.auth.loading,
     loggedIn: state.auth.loggedIn
   }
 }
 
-export default connect(mapStateToProps,{emailChanged, passwordChanged, loginUser, loggedInUser, newUser})(signup_screen)
+export default connect(mapStateToProps,{emailChanged, passwordChanged, firstnameChanged, lastnameChanged, loginUser, loggedInUser, newUser})(signup_screen)
