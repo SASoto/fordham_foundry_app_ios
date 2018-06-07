@@ -53,10 +53,12 @@ export const loginUser = ({email, password}) => {
 //Add the new user to the 'users' database branch.
 function writeNewUserData(userId, email,firstname,lastname) {
   var refreshinit = "January 1, 2001 08:00:00"
+  var initials = parseInitials(firstname,lastname)
   firebase.database().ref('users/' + userId).set({
     email: email,
     firstname: firstname,
     lastname: lastname,
+    initials: initials,
     bio: "I'm a human who is associated with Fordham University, but I haven't updated my bio yet.",
     rhcamp: false,
     lccamp: false,
@@ -64,6 +66,14 @@ function writeNewUserData(userId, email,firstname,lastname) {
     lastnewsrefresh: refreshinit,      //A string object – if dates/times need to be compared, must convert to date with 'new Date()'
   })
   //console.log('Wrote user data successfully...??')
+}
+
+//Get first letter of first name and first letter of last name.
+function parseInitials(firstname,lastname) {
+  var name = firstname + " " + lastname;
+  var initials = name.match(/\b\w/g) || [];
+  initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+  return(initials)
 }
 
 export const newUser = ({email, password, firstname, lastname}) => {
