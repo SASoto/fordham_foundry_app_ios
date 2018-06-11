@@ -61,8 +61,20 @@ function writeNewUserData(userId, email,firstname,lastname) {
     initials: initials,
     bio: "I'm a human who is associated with Fordham University, but I haven't updated my bio yet.",
     lastnewsrefresh: refreshinit,      //A string object – if dates/times need to be compared, must convert to date with 'new Date()'
+    website: "",
+    affiliation1: "",
+    affiliation2: "",
+    affiliation3: "",
+    affiliation4: "",
+    affiliation5: "",
   })
-  //Initialize campus associations to false
+  initCampuses(userId)
+}
+
+
+
+//Initialize campus associations to false
+function initCampuses(userId) {
   firebase.database().ref('users/' + userId + '/campuses/').set({
     rhcamp: false,
     lccamp: false,
